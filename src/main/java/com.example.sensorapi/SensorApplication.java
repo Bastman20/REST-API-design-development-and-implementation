@@ -7,6 +7,14 @@ import javax.ws.rs.ApplicationPath;
 public class SensorApplication extends ResourceConfig {
 
     public SensorApplication() {
-        packages("com.example.sensorapi");
+        register(com.example.sensorapi.resource.DiscoveryResource.class);
+        register(com.example.sensorapi.resource.SensorRoomResource.class);
+        register(com.example.sensorapi.resource.SensorResource.class);
+
+        register(com.example.sensorapi.mapper.RoomNotEmptyExceptionMapper.class);
+        register(com.example.sensorapi.mapper.LinkedResourceNotFoundExceptionMapper.class);
+        register(com.example.sensorapi.mapper.SensorUnavailableExceptionMapper.class);
+        register(com.example.sensorapi.mapper.GlobalExceptionMapper.class);
+        register(com.example.sensorapi.filter.ApiLoggingFilter.class);
     }
 }
